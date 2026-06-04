@@ -1,4 +1,4 @@
-# M6 AdvanceWeb Actividad de Clase Análisis Código Francisco
+# M6 AdvancedWeb Actividad de Clase Análisis de Código 
 
 Aplicación web para visualizar métricas de productividad de desarrolladores. El backend expone una API REST con Spring Boot y el frontend consume los datos para mostrarlos mediante gráficas con React y Chart.js.
 
