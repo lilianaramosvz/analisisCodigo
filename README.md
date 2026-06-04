@@ -1,4 +1,4 @@
-# analisisCodigo
+# M6_AdvanceWeb_ActividadClase_AnalisisCodigoFrancisco
 
 Aplicación web para visualizar métricas de productividad de desarrolladores.  
 El backend expone una API REST con Spring Boot; el frontend las consume y grafica con React + Chart.js.
