@@ -1,4 +1,3 @@
-//frontend\productivity-dashboard\src\App.jsx
 import Dashboard from "./component/Dashboard";
 
 function App() {

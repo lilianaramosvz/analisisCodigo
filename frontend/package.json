@@ -9,9 +9,5 @@
     "build": "npm run build --workspace productivity-dashboard",
     "lint": "npm run lint --workspace productivity-dashboard",
     "preview": "npm run preview --workspace productivity-dashboard"
-  },
-  "dependencies": {
-    "axios": "^1.16.1",
-    "recharts": "^3.8.1"
   }
 }

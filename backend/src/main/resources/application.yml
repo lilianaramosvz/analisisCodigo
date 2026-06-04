@@ -1,0 +1,36 @@
+spring:
+  application:
+    name: demo
+
+cors:
+  allowed-origins: http://localhost:5173
+
+app:
+  metrics:
+    - developer-name: Francisco
+      metric-date: 2026-05-01
+      commits: 12
+      bugs-fixed: 2
+      tasks-completed: 5
+      story-points: 8
+
+    - developer-name: Francisco
+      metric-date: 2026-05-02
+      commits: 18
+      bugs-fixed: 1
+      tasks-completed: 7
+      story-points: 13
+
+    - developer-name: Francisco
+      metric-date: 2026-05-03
+      commits: 15
+      bugs-fixed: 3
+      tasks-completed: 6
+      story-points: 10
+
+    - developer-name: Francisco
+      metric-date: 2026-05-04
+      commits: 22
+      bugs-fixed: 0
+      tasks-completed: 8
+      story-points: 15

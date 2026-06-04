@@ -1,4 +1,3 @@
-//frontend\productivity-dashboard\src\component\Dashboard.jsx
 import { useEffect, useState } from "react";
 import { Line } from "react-chartjs-2";
 import styles from "../styles/Dashboard.module.css";

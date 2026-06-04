@@ -1,11 +1,3 @@
 package com.exampleback.demo.dto;
 
-import lombok.Data;
-
-@Data
-public class MetricResponseDTO {
-
-    private String label;
-
-    private Integer value;
-}
+public record MetricResponseDTO(String label, Integer value) {}

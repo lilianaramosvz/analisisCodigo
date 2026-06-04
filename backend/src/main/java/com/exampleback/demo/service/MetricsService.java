@@ -1,9 +1,11 @@
 package com.exampleback.demo.service;
 
-
 import java.util.List;
+import java.util.function.Function;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import com.exampleback.demo.dto.MetricResponseDTO;
 import com.exampleback.demo.model.DeveloperMetric;
@@ -15,47 +17,20 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class MetricsService {
 
-private final DeveloperMetricRepository repository;
+    private final DeveloperMetricRepository repository;
 
-public List<MetricResponseDTO> getMetricData(
-        String metric) {
+    public List<MetricResponseDTO> getMetricData(String metric) {
+        Function<DeveloperMetric, Integer> getValue = switch (metric) {
+            case "commits"     -> DeveloperMetric::getCommits;
+            case "bugs"        -> DeveloperMetric::getBugsFixed;
+            case "tasks"       -> DeveloperMetric::getTasksCompleted;
+            case "storyPoints" -> DeveloperMetric::getStoryPoints;
+            default -> throw new ResponseStatusException(
+                    HttpStatus.BAD_REQUEST, "Unknown metric: " + metric);
+        };
 
-List<DeveloperMetric> metrics =
-        repository.findAll();
-
-return metrics.stream()
-        .map(m -> {
-
-                MetricResponseDTO dto =
-                        new MetricResponseDTO();
-
-                dto.setLabel(
-                        m.getMetricDate().toString());
-
-                switch (metric) {
-
-                case "commits":
-                        dto.setValue(m.getCommits());
-                        break;
-
-                case "bugs":
-                        dto.setValue(m.getBugsFixed());
-                        break;
-
-                case "tasks":
-                        dto.setValue(m.getTasksCompleted());
-                        break;
-
-                case "storyPoints":
-                        dto.setValue(m.getStoryPoints());
-                        break;
-
-                default:
-                        dto.setValue(0);
-                }
-
-                return dto;
-        })
-        .toList();
-}
+        return repository.findAll().stream()
+            .map(m -> new MetricResponseDTO(m.getMetricDate().toString(), getValue.apply(m)))
+            .toList();
+    }
 }
